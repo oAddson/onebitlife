@@ -9,8 +9,8 @@ export default AllPages = () => {
   return(
     <NavigationContainer>
       <Stack.Navigator 
-        screeOptions={{
-          headerShow: false,
+        screenOptions={{
+          headerShown: false,
         }}
       >
 

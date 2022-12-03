@@ -2,7 +2,7 @@ import React from "react";
 import { Image, View, Text, ScrollView } from "react-native";
 
 export default Start = () => {
-  <View>
+  return (<View>
     <ScrollView showVerticalScrollIndicator={false}>
       <View>
         <Image
@@ -13,5 +13,5 @@ export default Start = () => {
         </Text>
       </View>
     </ScrollView>
-  </View>
+  </View>)
 }
