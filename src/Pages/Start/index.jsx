@@ -2,8 +2,14 @@ import React from "react";
 import { Image, View, Text, ScrollView, StyleSheet } from "react-native";
 
 import LifeStatus from "../../Components/Common/LifeStatus";
+import DefaultButton from "../../Components/Common/DefaultButton";
 
 export default Start = () => {
+
+  const handleNavAppExplanation = () => {
+    console.log("Testando o clique")
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView showVerticalScrollIndicator={false}>
@@ -17,6 +23,13 @@ export default Start = () => {
           </Text>
 
           <LifeStatus />
+          <DefaultButton
+            buttonText={"Continuar"}
+            handlePress={handleNavAppExplanation}
+            width={250}
+            height={50}
+          />
+          
         </View>
       </ScrollView>
     </View>
