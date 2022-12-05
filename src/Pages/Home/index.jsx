@@ -37,7 +37,7 @@ export default Home = () => {
 
           {moneyHabit ? (
             <EditHabit
-              habit={moneyHabit?.habitNme}
+              habit={moneyHabit?.habitName}
               frequency={`${moneyHabit?.habitTime - moneyHabit?.habitFrequency}`}
               habitArea={moneyHabit?.habitArea}
               checkColor={"#85BB65"}
@@ -48,7 +48,7 @@ export default Home = () => {
           
           {bodyHabit ? (
             <EditHabit
-              habit={bodyHabit?.habitNme}
+              habit={bodyHabit?.habitName}
               frequency={`${bodyHabit?.habitTime - bodyHabit?.habitFrequency}`}
               habitArea={bodyHabit?.habitArea}
               checkColor={"#FF0044"}
@@ -59,7 +59,7 @@ export default Home = () => {
 
           {funHabit ? (
             <EditHabit
-              habit={funHabit?.habitNme}
+              habit={funHabit?.habitName}
               frequency={`${funHabit?.habitTime - funHabit?.habitFrequency}`}
               habitArea={funHabit?.habitArea}
               checkColor={"#FE7F23"}

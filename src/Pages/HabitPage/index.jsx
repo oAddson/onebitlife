@@ -1,5 +1,6 @@
+
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -7,19 +8,22 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  Alert
-} from "react-native"
+} from "react-native";
 
 import SelectHabit from "../../Components/HabitPage/SelectHabit";
 import SelectFrequency from "../../Components/HabitPage/SelectFrequency";
 import Notification from "../../Components/HabitPage/Notification";
+import TimeDatePicker from "../../Components/HabitPage/TimeDatePicker";
 
 export default HabitPage = ({ route }) => {
-  const navigation = useNavigation();
-  const [habitInput, setHabitInput] = useState();
+	const navigation = useNavigation();
+	const [habitInput, setHabitInput] = useState();
   const [frequencyInput, setFrequencyInput] = useState();
   const [notificationToggle, setNotificationToggle] = useState();
-  const {create, habit} = route.params;
+  const [dayNotification, setDayNotification] = useState();
+  const [timeNotification, setTimeNotification] = useState();
+
+	const { create, habit } = route.params;
 
   return (
     <View style={styles.container}>
@@ -40,16 +44,34 @@ export default HabitPage = ({ route }) => {
             <View style={styles.inputContainer}>
               <Text style={styles.area}>{habit?.habitArea}</Text>
             </View>
+
             <Text style={styles.inputText}>Hábito</Text>
             <SelectHabit habit={habit} habitInput={setHabitInput} />
+
             <Text style={styles.inputText}>Frequência</Text>
-            <SelectFrequency habitFrequency={habit?.habitFrequency} frequencyInput={setFrequencyInput} />
+            <SelectFrequency
+              habitFrequency={habit?.habitFrequency}
+              frequencyInput={setFrequencyInput}
+            />
+
             {frequencyInput === "Mensal" ? null : (
               <Notification
                 notificationToggle={notificationToggle}
                 setNotificationToggle={setNotificationToggle}
               />
             )}
+
+            {notificationToggle ? (
+              frequencyInput === "Mensal" ? null : (
+                <TimeDatePicker
+                  frequency={frequencyInput}
+                  dayNotification={dayNotification}
+                  timeNotification={timeNotification}
+                  setDayNotification={setDayNotification}
+                  setTimeNotification={setTimeNotification}
+                />
+              )
+            ) : null}
           </View>
         </View>
       </ScrollView>
@@ -74,6 +96,8 @@ const styles = StyleSheet.create({
   mainContent: {
     width: 250,
     alignSelf: "center",
+  },configButton: {
+    alignItems: "center",
   },
   title: {
     fontWeight: "bold",
